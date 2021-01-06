@@ -4,10 +4,11 @@ import axios from "axios";
 const PostCreate = () => {
   const [title, setTitle] = useState("");
   const onSubmit = async (event) => {
-    event.prevenDefault();
+    event.preventDefault();
     await axios.post("http://localhost:4000/posts", {
       title,
     });
+    setTitle("");
   };
   return (
     <div>
@@ -20,7 +21,9 @@ const PostCreate = () => {
             value={title}
           />
         </div>
-        <button className="btn btn-primary">Submit</button>
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
       </form>
     </div>
   );
